@@ -1,0 +1,17 @@
+SELECT country.country,
+COUNT(DISTINCT customer.customer_id) AS all_customer_count,
+COUNT(DISTINCT country.country) AS top_customer_count
+FROM
+(SELECT CU.customer_id, N.first_name,N.last_name,CO.country,CIT.city,
+  SUM(amount) AS Total_amount_paid
+FROM payment CU
+INNER JOIN customer N ON CU.customer_id=N.customer_id
+INNER JOIN address AD ON N.address_id=AD.address_id
+INNER JOIN city CIT ON AD.city_id=CIT.city_id
+INNER JOIN country CO ON CIT.country_id=CO.country_id
+WHERE CO.country IN('India','China','United States','Japan','Mexico','Brazil','Russian Federation','Philippines','Turkey','Indonesia')
+AND CIT.city IN ('Aurora', 'Atlixco','Xintai','Adoni','Dhule (Dhulia)','Kurashiki','PingXiang','Sivas','Celaya','So Leopoldo')
+
+GROUP BY CU.customer_id,N.first_name,N.last_name,CO.country,CIT.city
+ORDER BY total_amount_paid DESC LIMIT 5) AS top_5_customers
+LEFT JOIN customer ON customer.customer_id = customer.customer_id
