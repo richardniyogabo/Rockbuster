@@ -14,4 +14,4 @@ The Dataset contain information about Rockbuster’s film inventory, customers, 
 
 SQL (short for structured query language) has been used to answer increasingly complex business questions and the results of the analysis will be presented to Rockbuster management. 
 
-Click here for additional visualizations https://public.tableau.com/app/profile/richard.niyongabo#!/?newProfile=&activeTab=0
+Click here https://public.tableau.com/app/profile/richard.niyongabo#!/?newProfile=&activeTab=0 for additional analytics using Tableau  
